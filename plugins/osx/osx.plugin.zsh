@@ -97,3 +97,17 @@ function trash() {
   IFS=$temp_ifs
 }
 
+if [[ $TERM_PROGRAM == "Apple_Terminal" ]] && [[ -z "$INSIDE_EMACS" ]]; then
+  autoload -U add-zsh-hook
+
+  function lion_resume_chpwd {
+    # add support for OS X Lion window resume on Terminal.app relaunch
+    # straight port from /etc/bashrc on Lion
+    local SEARCH=' '
+    local REPLACE='%20'
+    local PWD_URL="file://$HOSTNAME${PWD//$SEARCH/$REPLACE}"
+    printf '\e]7;%s\a' "$PWD_URL"
+  }
+
+   add-zsh-hook chpwd lion_resume_chpwd
+fi
