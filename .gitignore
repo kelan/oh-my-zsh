@@ -6,3 +6,6 @@ custom/*
 !custom/example.zsh
 cache
 *.swp
+
+# Personal
+__Session.vim
