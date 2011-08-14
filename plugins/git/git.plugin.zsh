@@ -1,8 +1,8 @@
 # Aliases
 alias g='git'
 compdef g=git
-alias gst='git status'
-compdef _git gst=git-status
+alias gs='git status'
+compdef _git gs=git-status
 alias gl='git pull'
 compdef _git gl=git-pull
 alias gup='git fetch && git rebase'
@@ -11,6 +11,8 @@ alias gp='git push'
 compdef _git gp=git-push
 alias gd='git diff'
 compdef _git gd=git-diff
+alias gds='git diff --stat'
+compdef _git gds=git-diff
 gdv() { git-diff -w "$@" | view - }
 compdef _git gdv=git-diff
 alias gc='git commit -v'
