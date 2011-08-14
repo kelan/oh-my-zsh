@@ -1,85 +1,20 @@
-# Based on wedisagree.zsh-theme
-# with some tips from http://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt
+# Took some things from:
+# * wedisagree.zsh-theme
+# * dogenpunk.zsh-theme
+# * jnrowse.zsh-theme (ret_status, I think)
+# * http://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt
 
 # This s for vi-mode
 MODE_INDICATOR="%{$fg_bold[magenta]%}❮%{$reset_color%}%{$fg[red]%}❮❮%{$reset_color%}"
 
-# from http://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt and also
-# in the dogenpunk theme, and 
-function prompt_char {
-    # git branch >/dev/null 2>/dev/null && echo '±' && return
-    # hg root >/dev/null 2>/dev/null && echo '☿' && return
-    echo '$'
-}
-
-# from the jnrowse.zsh-theme (for the up-pointing status return).
 local ret_status="%(?::%{$fg_bold[red]%}%?↵  %{$reset_color%})"
 
-# PROMPT='%{$fg[magenta]%}[%c $(git_prompt_info) ]
-# PROMPT='${time} %{$fg[magenta]%}$(git_prompt_info)--%{$reset_color%}$(git_prompt_status)%{$reset_color%}--HG:$(hg_prompt_info)
-# PROMPT='%{$fg[magenta]%}[%c] %{$reset_color%}'
-
-# Final 2 lines:
-# PROMPT='%{$fg[magenta]%}[%~]%{$reset_color%}
-# ${ret_status}%{$fg[magenta]%}$(prompt_char)%{$reset_color%} '
-
-# Final 1 line (path info goes on right)
 PROMPT='%{$fg[magenta]%}\$%{$reset_color%} '
 
 # The right-hand prompt
-# RPROMPT='${time} %{$fg[magenta]%}$(git_prompt_info)%{$reset_color%}$(git_prompt_status)%{$reset_color%}'
-# RPROMPT='$(vi_mode_prompt_info)${return_status}%{$fg[magenta]%}[%c]%{$reset_color%} '
-# RPROMPT='${return_status}$(git_prompt_info)$(git_prompt_status)$(hg_prompt_info)$(hg_prompt_status)%{$reset_color%}'
-
-# Final:
 RPROMPT='${ret_status}%{$fg[magenta]%}[%4c]%{$reset_color%}$(vcs_prompt_info)'
 
-# Add this at the start of RPROMPT to include rvm info showing ruby-version@gemset-name
-# %{$fg[yellow]%}$(~/.rvm/bin/rvm-prompt)%{$reset_color%} 
-
-ZSH_THEME_HG_PROMPT_PREFIX="%{$fg[cyan]%}☿ " # ⓗ
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[cyan]%}± " # ⓖ
-ZSH_THEME_GIT_PROMPT_SUFFIX=" %{$reset_color%}"
-
-# Dirty status is shown by more specific symbols below, and if it's clean
-# just don't show any symbols.
-# ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[yellow]%} ⚡%{$reset_color%}" # Ⓓ
-ZSH_THEME_GIT_PROMPT_DIRTY=""
-# ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[green]%}☀ %{$reset_color%}" # Ⓞ
-ZSH_THEME_GIT_PROMPT_CLEAN=""
-
-# Original
-# ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[cyan]%}?%{$reset_color%}" # ⓣ ✭
-# ZSH_THEME_GIT_PROMPT_ADDED="%{$fg[cyan]%}✚ %{$reset_color%}" # ⓐ ⑃
-# ZSH_THEME_GIT_PROMPT_MODIFIED="%{$fg[yellow]%} %{$reset_color%}"  # ⓜ ⑁
-# ZSH_THEME_GIT_PROMPT_DELETED="%{$fg[red]%}✖ %{$reset_color%}" # ⓧ ⑂
-# ZSH_THEME_GIT_PROMPT_RENAMED="%{$fg[blue]%}➜ %{$reset_color%}" # ⓡ ⑄
-# ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg[magenta]%}♒ %{$reset_color%}" # ⓤ ⑊
-
-# next
-# ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[cyan]%}?%{$reset_color%}" # ⓣ ✭
-# ZSH_THEME_GIT_PROMPT_ADDED="%{$fg[green]%}ⓐ %{$reset_color%}" #  ⑃
-# ZSH_THEME_GIT_PROMPT_MODIFIED="%{$fg[yellow]%}⚡ %{$reset_color%}"  #  ⑁
-# ZSH_THEME_GIT_PROMPT_DELETED="%{$fg[red]%}ⓧ %{$reset_color%}" #  ⑂
-# ZSH_THEME_GIT_PROMPT_RENAMED="%{$fg[blue]%}ⓡ %{$reset_color%}" #  ⑄
-# ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg[magenta]%}ⓤ %{$reset_color%}" #  ⑊
-
-# ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[cyan]%}?" # ⓣ ✭
-# ZSH_THEME_GIT_PROMPT_ADDED="%{$fg[green]%}ⓐ " #  ⑃
-# ZSH_THEME_GIT_PROMPT_MODIFIED="%{$fg[yellow]%}⚡ "  #  ⑁
-# ZSH_THEME_GIT_PROMPT_DELETED="%{$fg[red]%}ⓧ " #  ⑂
-# ZSH_THEME_GIT_PROMPT_RENAMED="%{$fg[blue]%}ⓡ " #  ⑄
-# ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg[magenta]%}ⓤ " #  ⑊
-
-# More symbols to choose from:
-# ☀ ✹ ☄ ♆ ♀ ♁ ♐ ♇ ♈ ♉ ♚ ♛ ♜ ♝ ♞ ♟ ♠ ♣ ⚢ ⚲ ⚳ ⚴ ⚥ ⚤ ⚦ ⚒ ⚑ ⚐ ♺ ♻ ♼ ☰ ☱ ☲ ☳ ☴ ☵ ☶ ☷
-# ✡ ✔ ✖ ✚ ✱ ✤ ✦ ❤ ➜ ➟ ➼ ✂ ✎ ✐ ⨀ ⨁ ⨂ ⨍ ⨎ ⨏ ⨷ ⩚ ⩛ ⩡ ⩱ ⩲ ⩵  ⩶ ⨠ 
-# ⬅ ⬆ ⬇ ⬈ ⬉ ⬊ ⬋ ⬒ ⬓ ⬔ ⬕ ⬖ ⬗ ⬘ ⬙ ⬟  ⬤ 〒 ǀ ǁ ǂ ĭ Ť Ŧ
-
-# local return_status="%(?..%{$fg[red]%}%?↵%{$reset_color%})"
-# local ret_status="%(?:%{$fg_bold[green]%}Ξ:%{$fg_bold[red]%}%S↑%s%?)"
-
-
+# TODO: look at this
 # Determine the time since last commit. If branch is clean,
 # use a neutral color, otherwise colors will vary according to time.
 function git_time_since_commit() {
