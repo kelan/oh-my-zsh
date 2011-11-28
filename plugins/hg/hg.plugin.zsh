@@ -15,6 +15,10 @@ compdef _hg gca=hg-commit
 
 alias hl='hg log'
 compdef _hg hl=hg-log
+alias hll='hg llog'
+compdef _hg hll=hg-log
+alias hlll='hg lllog'
+compdef _hg hlll=hg-log
 
 # Patch Queue stuff
 alias hq='hg qseries'
@@ -26,6 +30,8 @@ alias hqpo='hg qpop'
 compdef _hg hqpo=hg-qpop
 alias hqpu='hg qpush'
 compdef _hg hqpu=hg-qpush
+alias hqg='hg qgoto'
+compdef _hg hqg=hg-qgoto
 # Show the contents of the qtip
 alias hqd='hg diff -c qtip --pager always'
 compdef _hg hqd=hg-diff

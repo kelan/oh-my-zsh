@@ -84,7 +84,7 @@ vcs_prompt_status() {
         STATUS_OUTPUT="$(hg status --color never 2>/dev/null)"
         # Patch Queue stuff
         PATCH_DIR="$(hg root)/.hg/patches"
-        if [[ -d "$PATCH_DIR" ]]; then
+        if [[ -f "$PATCH_DIR/status" ]]; then
             local applied="$(wc -l $PATCH_DIR/status | awk '{print $1}')"
             if [[ "$applied" = 0 ]]; then applied="" fi
             local unapplied="$(hg qunapplied | wc -l | awk '{print $1}')"
